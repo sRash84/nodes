@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile Page</title>
+	<link rel="stylesheet" type="text/css" href="/public/style.css">
+</head>
+<body>
+	<%- include ("partials/nav.ejs") %>
+	<h1>Welcome <%= user %></h1>
+
+	<p> At the age of <%= userData.age %> you are working as a <%= userData.job %></p>
+	<p>You have hobbies like</p>
+	<ul>
+	<% userData.hobbies.forEach(function(items){%>
+		<li> <%= items %></li>
+	 <% }) %>
+	 </ul>
+</body>
+</html>
