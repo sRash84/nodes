@@ -1,6 +1,9 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var path = require('path');
 var app = express();
+
+var urlencodeParser = bodyParser.urlencoded({extended:false});
 
 app.set('view engine', 'ejs');
 
@@ -21,6 +24,11 @@ app.get('/contact', function(req, res){
 
 	// rendering contact page using ejs template engine
 	res.render('contact', {qs: req.query});
+});
+
+app.post('/contact', urlencodeParser, function(req, res){
+	console.log(req.body);
+	res.render('contact-success', {data: req.body});
 });
 
 app.get("/profile/:name", function(req, res){
